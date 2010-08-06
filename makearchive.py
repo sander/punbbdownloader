@@ -1,5 +1,5 @@
 # This file is part of PunBBDownloader.
-# Copyright (C) 2007  Sander Dijkhuis
+# Copyright (C) 2007--2010  Sander Dijkhuis
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -130,6 +130,7 @@ for file in files:
  # remove mypunbb's ads
  s=re.compile('<div style="TEXT-ALIGN.*?<br />',re.DOTALL).sub('',s)
  s=re.compile('<li id="(navsearch|navregister|navlogin)">.*?</li>').sub('',s)
+ s=re.compile('<div class="postfoot(left|right)">\s*<div>.*?</div>\s*</div>',re.DOTALL).sub('',s)
  s=re.compile('<div class="postfoot(left|right)">.*?</div>',re.DOTALL).sub('',s)
  s=re.compile('<div id="brdwelcome".*?</div>',re.DOTALL).sub('',s)
  s=re.compile('<div class="conl">\n<form.*?</form>\n</div>',re.DOTALL).sub('',s)
@@ -145,7 +146,10 @@ for file in files:
  s=re.compile('<dl class="conl">.*?</dl>',re.DOTALL).sub('',s)
  #tmp
  s=s.replace('<link rel="stylesheet" type="text/css" href="style/Oxygen.css" />','<link rel="stylesheet" type="text/css" href="Oxygen.css" />')
+ s=s.replace('<img src="%s/'%loc,'<img src="')
+ s=s.replace('<img src="%s'%loc,'<img src="')
  s=s.replace('<img src="img/smilies/','<img src="smiley-')
+ s=s.replace('<img src="img/avatars/','<img src="avatar-')
  n=1
  for old,new in links.iteritems():
   #s=re.compile('<a href="[%s]?%s(#|")'%(loc,old)).sub(r'<a href="%s\1'%new,s)
