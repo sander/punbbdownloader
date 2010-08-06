@@ -153,7 +153,7 @@ for file in files:
   s=s.replace('<a href="%s#'%old,'<a href="%s#'%new)
   s=s.replace('<a href="%s%s">'%(loc,old),'<a href="%s">'%new)
   s=s.replace('<a href="%s%s#'%(loc,old),'<a href="%s#'%new)
-  print n
+  #print n
   n+=1
   # a faster solution might be one regexp, that also takes care of adding loc
  # tidy things up again and save it
